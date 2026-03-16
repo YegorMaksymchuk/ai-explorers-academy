@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Explorers — From Curious Learner to Startup Builder</title>
+  <meta name="description" content="12-Week AI course for students and parents. Learn GenAI, build with AI tools, and launch your startup idea!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #0a0a1a;
+      --bg-mid: #1a1a3e;
+      --bg-card: rgba(255,255,255,0.015);
+      --bg-card-hover: rgba(255,255,255,0.04);
+      --text-primary: #e0e7ff;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+      --accent: #a5b4fc;
+      --accent-light: #c7d2fe;
+      --border: rgba(255,255,255,0.06);
+      --border-active: rgba(165,180,252,0.25);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 40%, #0d2137 100%);
+      color: var(--text-secondary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 60px 24px 50px;
+      text-align: center;
+    }
+    .hero__stars {
+      position: absolute; inset: 0; opacity: 0.5;
+      background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.2), transparent),
+        radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 80% 50%, rgba(255,255,255,0.15), transparent),
+        radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.25), transparent);
+    }
+    .hero__orb {
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, rgba(99,102,241,0.05) 40%, transparent 70%);
+      filter: blur(40px);
+    }
+    .hero__inner { position: relative; z-index: 1; }
+    .hero__badge {
+      display: inline-block; padding: 6px 20px;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 100px;
+      font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 24px;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(34px, 6vw, 58px); font-weight: 400; line-height: 1.1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 30%, #818cf8 60%, #c4b5fd 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero h2 {
+      font-size: clamp(18px, 3vw, 26px); font-weight: 400;
+      color: var(--accent-light); font-style: italic; margin-bottom: 28px;
+    }
+    .hero__desc {
+      max-width: 640px; margin: 0 auto 36px;
+      font-size: 16px; line-height: 1.75; color: var(--text-secondary);
+    }
+    .hero__desc strong { color: var(--text-primary); }
+
+    /* highlights row */
+    .highlights { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
+    .highlights__item { text-align: center; min-width: 80px; }
+    .highlights__num { font-size: 28px; font-weight: 700; color: var(--accent); }
+    .highlights__label {
+      font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text-dim); margin-top: 4px;
+    }
+
+    /* ---- AUDIENCE CARDS ---- */
+    .audience { padding: 0 24px 40px; max-width: 920px; margin: 0 auto; }
+    .audience__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .audience__card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .audience__card:hover { border-color: rgba(165,180,252,0.3); transform: translateY(-2px); }
+    .audience__card-emoji { font-size: 32px; margin-bottom: 12px; }
+    .audience__card h3 { font-size: 18px; color: var(--text-primary); margin-bottom: 8px; }
+    .audience__card p  { font-size: 14px; line-height: 1.6; }
+
+    /* ---- SECTION HEADING ---- */
+    .section-title {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 28px; text-align: center; margin-bottom: 24px;
+      color: var(--text-primary); font-weight: 400;
+    }
+
+    /* ---- FILTER TAGS ---- */
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; }
+    .filters__btn {
+      padding: 6px 16px; border-radius: 100px; cursor: pointer;
+      font-size: 13px; font-family: inherit; transition: all 0.2s;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent; color: var(--text-dim);
+    }
+    .filters__btn:hover { border-color: rgba(255,255,255,0.2); color: var(--text-secondary); }
+    .filters__btn.active {
+      border-color: var(--accent); background: rgba(165,180,252,0.12);
+      color: var(--accent); font-weight: 600;
+    }
+
+    /* ---- LESSON CARDS ---- */
+    .lessons { padding: 0 24px 60px; max-width: 920px; margin: 0 auto; }
+    .lesson {
+      margin-bottom: 12px; border-radius: 16px;
+      border: 1px solid var(--border); background: var(--bg-card);
+      overflow: hidden; transition: border-color 0.3s, background 0.3s;
+    }
+    .lesson.expanded { border-color: var(--border-active); background: var(--bg-card-hover); }
+
+    .lesson__header {
+      padding: 20px 24px; display: flex; align-items: center; gap: 16px; cursor: pointer;
+      -webkit-user-select: none; user-select: none;
+    }
+    .lesson__icon {
+      font-size: 30px; width: 52px; height: 52px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; background: rgba(255,255,255,0.05);
+    }
+    .lesson__meta { flex: 1; min-width: 0; }
+    .lesson__week {
+      font-size: 11px; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase;
+    }
+    .lesson__tag {
+      font-size: 11px; padding: 2px 10px; border-radius: 100px; margin-left: 10px;
+      display: inline-block;
+    }
+    .lesson__title {
+      font-size: 17px; font-weight: 600; color: var(--text-primary); margin-top: 4px;
+    }
+    .lesson__subtitle { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
+    .lesson__chevron {
+      font-size: 18px; color: var(--text-dim); transition: transform 0.3s; flex-shrink: 0;
+    }
+    .lesson.expanded .lesson__chevron { transform: rotate(180deg); }
+
+    /* expanded body */
+    .lesson__body {
+      display: none; padding: 0 24px 24px;
+      border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;
+    }
+    .lesson.expanded .lesson__body { display: block; }
+    .lesson__desc { font-size: 15px; line-height: 1.75; color: #cbd5e1; margin-bottom: 16px; }
+
+    .lesson__analogy {
+      background: rgba(165,180,252,0.06); border: 1px solid rgba(165,180,252,0.12);
+      border-radius: 12px; padding: 16px 20px; margin-bottom: 16px;
+    }
+    .lesson__analogy-label {
+      font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 6px;
+    }
+    .lesson__analogy p { font-size: 14px; line-height: 1.7; color: var(--accent-light); font-style: italic; }
+
+    .lesson__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+
+    .lesson__outcome {
+      background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.15);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .lesson__outcome-label {
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: #34d399; font-weight: 600; margin-bottom: 6px;
+    }
+    .lesson__outcome p { font-size: 13px; color: #a7f3d0; line-height: 1.5; }
+
+    .lesson__tools {
+      background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.15);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .lesson__tools-label {
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: #fbbf24; font-weight: 600; margin-bottom: 8px;
+    }
+    .lesson__tools-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .lesson__tool {
+      font-size: 12px; padding: 3px 10px; border-radius: 6px;
+      background: rgba(251,191,36,0.1); color: #fde68a;
+      border: 1px solid rgba(251,191,36,0.2);
+    }
+
+    /* ---- JOURNEY MAP ---- */
+    .journey { padding: 40px 24px 60px; max-width: 920px; margin: 0 auto; text-align: center; }
+    .journey p { color: var(--text-dim); font-size: 14px; margin-bottom: 32px; }
+    .journey__steps { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .journey__step {
+      padding: 10px 20px; border-radius: 12px; font-size: 14px; font-weight: 600;
+    }
+    .journey__arrow { color: var(--text-dim); font-size: 20px; }
+
+    /* ---- FOOTER ---- */
+    .footer {
+      padding: 32px 24px 48px; max-width: 920px; margin: 0 auto;
+      border-top: 1px solid var(--border); text-align: center;
+    }
+    .footer p { font-size: 12px; color: var(--text-dim); line-height: 1.8; }
+
+    /* ---- FORCE BROWSERS TO PRINT BACKGROUNDS ---- */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* ---- PRINT STYLES ---- */
+    @media print {
+      body {
+        background: linear-gradient(160deg, #0a0a1a 0%, #1a1a3e 40%, #0d2137 100%) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .hero__stars { opacity: 0.3 !important; }
+      .filters { display: none !important; }
+      .lesson { break-inside: avoid; page-break-inside: avoid; }
+      .lesson__body { display: block !important; }
+      .lesson__chevron { display: none !important; }
+      .audience__card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__stars"></div>
+    <div class="hero__orb"></div>
+    <div class="hero__inner">
+      <div class="hero__badge">12-Week Intensive Program</div>
+      <h1>AI Explorers</h1>
+      <h2>From Curious Learner to Startup Builder</h2>
+      <p class="hero__desc">
+        A hands-on program for <strong>students</strong> and <strong>parents</strong> who want to
+        understand, use, and build with Generative AI. No prior coding experience needed —
+        just curiosity and the desire to create something amazing!
+      </p>
+      <div class="highlights">
+        <div class="highlights__item"><div class="highlights__num">12</div><div class="highlights__label">Weeks</div></div>
+        <div class="highlights__item"><div class="highlights__num">🧠</div><div class="highlights__label">Hands-On</div></div>
+        <div class="highlights__item"><div class="highlights__num">🚀</div><div class="highlights__label">Build a Startup</div></div>
+        <div class="highlights__item"><div class="highlights__num">🌐</div><div class="highlights__label">Go Live</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIENCE -->
+  <section class="audience">
+    <div class="audience__grid">
+      <div class="audience__card">
+        <div class="audience__card-emoji">🎓</div>
+        <h3>For Students</h3>
+        <p>Learn how AI actually works, build real projects, and get a head start on the skills every future job will need.</p>
+      </div>
+      <div class="audience__card">
+        <div class="audience__card-emoji">👨‍👩‍👧‍👦</div>
+        <h3>For Parents</h3>
+        <p>Understand the AI your kids will grow up with. Learn practical tools to boost your own productivity at work and home.</p>
+      </div>
+      <div class="audience__card">
+        <div class="audience__card-emoji">💡</div>
+        <h3>For Dreamers</h3>
+        <p>Have a startup idea? We'll help you research it, plan it, build a website, and put it live on the internet!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="lessons" style="padding-top: 20px;">
+    <h2 class="section-title">Course Curriculum</h2>
+
+    <div class="filters" id="filters"></div>
+    <div id="lessons-container"></div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey">
+    <h2 class="section-title">Your Learning Journey</h2>
+    <p>From zero knowledge to launching your first AI-powered startup</p>
+    <div class="journey__steps">
+      <div class="journey__step" style="background:rgba(129,140,248,0.15);border:1px solid rgba(129,140,248,0.3);color:#818cf8;">Understand AI</div>
+      <span class="journey__arrow">→</span>
+      <div class="journey__step" style="background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);color:#34d399;">Use AI Tools</div>
+      <span class="journey__arrow">→</span>
+      <div class="journey__step" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);color:#fbbf24;">Build with AI</div>
+      <span class="journey__arrow">→</span>
+      <div class="journey__step" style="background:rgba(244,114,182,0.15);border:1px solid rgba(244,114,182,0.3);color:#f472b6;">Launch Startup! 🚀</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>📚 Course materials reference: Microsoft Responsible AI Framework · Mastering RAG ·
+      Enterprise GenAI Delivery Patterns · ReAct Framework · Zero-Shot Learning ·
+      Prompt &amp; Context Engineering · Stanford AI Professional Program ·
+      Web Performance Optimization · Automate the Boring Stuff with Python</p>
+  </footer>
+
+  <script>
+    // ---- DATA ----
+    const lessons = [
+      { week:1, title:"Welcome to the AI World", subtitle:"Introduction to Course & Responsible AI by Microsoft", icon:"🌟",
+        description:"We start our journey by understanding what Generative AI is and why it matters. Just like learning to drive a car, we first learn the traffic rules — here we learn Microsoft's Responsible AI Framework: fairness, reliability, safety, privacy, inclusiveness, transparency, and accountability.",
+        realWorld:"Imagine AI is like a superpower 🦸 — but even superheroes need rules. We learn how companies like Microsoft make sure AI is used for good, not harm.",
+        outcome:"Understand what GenAI is and how to use it responsibly",
+        tools:["Microsoft Responsible AI Framework"], tag:"Foundation" },
+      { week:2, title:"How AI \"Reads\" and \"Thinks\"", subtitle:"LLM, Tokens & Tokenizers", icon:"🧩",
+        description:"Large Language Models (LLMs) like ChatGPT and Claude don't read words like humans. They break text into small pieces called 'tokens' using a 'tokenizer'. Think of it like LEGO blocks — each word is built from smaller pieces the AI can understand.",
+        realWorld:"When you text 'Hello World' 📱, AI sees it as ['Hel', 'lo', ' World'] — like cutting a pizza into slices before eating. The tokenizer is the pizza cutter!",
+        outcome:"Understand how AI processes and generates language",
+        tools:["OpenAI Tokenizer","Tiktoken"], tag:"Core Concepts" },
+      { week:3, title:"Teaching AI to Remember", subtitle:"Embeddings & Vector Databases", icon:"🧠",
+        description:"Embeddings turn words into numbers (vectors) that capture meaning. 'King' and 'Queen' are close in this number-space, just like they're related in real life. Vector databases store these number-representations so AI can find similar information quickly.",
+        realWorld:"Think of a library 📚 where books aren't organized by alphabet, but by meaning. A book about 'dogs' sits next to 'puppies' and 'pets' — not next to 'documentation'. That's how vector databases work!",
+        outcome:"Understand how AI organizes and retrieves knowledge",
+        tools:["Pinecone","ChromaDB","Weaviate"], tag:"Core Concepts" },
+      { week:4, title:"Give AI Your Own Knowledge", subtitle:"RAG — Retrieval Augmented Generation", icon:"📖",
+        description:"RAG is like giving AI a cheat sheet before an exam! Instead of relying only on what it learned during training, we let AI search through YOUR documents, websites, or data first, then answer based on that fresh information.",
+        realWorld:"Imagine asking a friend a question 🤔, and before answering, they quickly flip through your notebook to give you the most accurate answer. That's RAG — the AI retrieves relevant info, then generates a smart response!",
+        outcome:"Build a system where AI answers using your own data",
+        tools:["LangChain","LlamaIndex","Vector Stores"], tag:"Building Blocks" },
+      { week:5, title:"Talk to AI Like a Pro — Part 1", subtitle:"Prompt Engineering & Context Engineering", icon:"✍️",
+        description:"Prompt Engineering is the art of asking AI the right questions in the right way. Context Engineering is about giving AI the right background information. Together, they're like being a good movie director — you need to give clear instructions AND set the scene.",
+        realWorld:"If you ask someone 'Make food' 🍕 you might get anything. But 'Make a pepperoni pizza for 4 people with thin crust' gets exactly what you want. Same with AI — better prompts = better results!",
+        outcome:"Master techniques: role-playing, few-shot examples, chain-of-thought",
+        tools:["ChatGPT","Claude","Prompt templates"], tag:"Essential Skills" },
+      { week:6, title:"Talk to AI Like a Pro — Part 2", subtitle:"Advanced Prompt & Context Engineering", icon:"🎯",
+        description:"We go deeper! Learn advanced techniques like chain-of-thought reasoning, system prompts, multi-turn conversations, and how to structure context windows. This is where you become a true AI whisperer.",
+        realWorld:"Think of coaching a sports team 🏀 — first you teach basic plays (Week 5), then advanced strategy like reading the opponent and adapting in real-time. That's advanced prompting!",
+        outcome:"Create complex, multi-step AI workflows with expert-level prompts",
+        tools:["System Prompts","Chain-of-Thought","Context Windows"], tag:"Essential Skills" },
+      { week:7, title:"Your AI Research Assistant", subtitle:"Google NotebookLM for Research & Summarization", icon:"📓",
+        description:"NotebookLM by Google is like having a brilliant study buddy who reads ALL your documents and can answer questions about them. Upload PDFs, articles, or notes — and it creates summaries, answers questions, and even generates audio overviews!",
+        realWorld:"Imagine having 500 pages of textbook to study for an exam 📝. NotebookLM reads everything for you and creates a personalized study guide. It's like having a tutor available 24/7!",
+        outcome:"Use NotebookLM to research, summarize, and prepare materials efficiently",
+        tools:["Google NotebookLM","PDF uploads","Audio summaries"], tag:"Productivity Tools" },
+      { week:8, title:"AI on Your Desktop", subtitle:"ChatGPT Desktop & Claude Desktop for Research & Presentations", icon:"💻",
+        description:"Desktop AI apps work directly with your files, screen, and workflows. ChatGPT Desktop can see your screen and help in real-time. Claude Desktop can read documents and help create presentations. They're like having an AI co-pilot sitting next to you!",
+        realWorld:"Remember how a co-pilot helps a pilot fly ✈️? These desktop apps sit alongside your work — helping you write emails, create slides, analyze data, and prepare presentations without switching between apps.",
+        outcome:"Use desktop AI tools to boost daily productivity 10x",
+        tools:["ChatGPT Desktop","Claude Desktop","MCP Servers"], tag:"Productivity Tools" },
+      { week:9, title:"Code with AI — Your First Steps", subtitle:"Spec-Driven Development, AI IDEs & Agents (Cursor IDE)", icon:"🤖",
+        description:"Spec-Driven Development means writing a clear plan (specification) first, then letting AI help build it. Cursor IDE is a code editor supercharged with AI — it can write, explain, and fix code based on your instructions. AI Agents can even complete multi-step coding tasks autonomously!",
+        realWorld:"Building software with AI is like building a house 🏠 — you draw the blueprint (spec) first, then AI acts as your construction crew, building walls, installing plumbing, and painting. You're the architect!",
+        outcome:"Write specifications and use Cursor IDE to build real applications",
+        tools:["Cursor IDE","AI Agents","Spec documents"], tag:"Building & Creating" },
+      { week:10, title:"Build Your Own AI Agents", subtitle:"LangChain & Self-Crafted Agents", icon:"⚡",
+        description:"LangChain is a framework that lets you chain multiple AI steps together — like building a pipeline. Self-crafted agents are AI programs that can think, decide, and take actions on their own. They can search the web, call APIs, and complete complex tasks!",
+        realWorld:"Think of a robot chef 🤖🍳 that can read a recipe (understand the task), check the fridge (search for info), go shopping (call APIs), and cook the meal (produce the result) — all by itself. That's what AI agents do!",
+        outcome:"Build custom AI agents that automate complex workflows",
+        tools:["LangChain","ReAct Framework","Custom Tools"], tag:"Building & Creating" },
+      { week:11, title:"From Idea to Plan", subtitle:"Research Your Startup Idea & Build an Implementation Plan", icon:"🚀",
+        description:"Every great startup begins with research. You'll use ALL the AI tools you've learned to research your market, analyze competitors, validate your idea, and create a step-by-step implementation plan. This is where your dream becomes a real project!",
+        realWorld:"Starting a startup is like planning an expedition to climb a mountain 🏔️ — you research the weather, pack the right gear, plan your route, and prepare for challenges. AI is your expedition planning assistant!",
+        outcome:"Complete market research and create an actionable startup plan",
+        tools:["NotebookLM","Claude","ChatGPT","All previous tools"], tag:"Entrepreneurship" },
+      { week:12, title:"Launch Day! 🎉", subtitle:"Build & Deploy Your Website on GitHub Pages with Cursor", icon:"🌐",
+        description:"The grand finale! Using Cursor IDE and everything you've learned, you'll build a real website for your startup idea and publish it live on GitHub Pages — for free! By the end of this lesson, your project will be live on the internet for the whole world to see.",
+        realWorld:"This is like opening day for your first store 🏪 — you've planned the business, designed the interior, stocked the shelves, and now you flip the 'OPEN' sign. Your website goes live and your startup journey officially begins!",
+        outcome:"A live website on the internet showcasing your startup idea",
+        tools:["Cursor IDE","GitHub Pages","HTML/CSS/JS"], tag:"Entrepreneurship" },
+    ];
+
+    const tagColors = {
+      "Foundation":        { bg:"#FFF3E0", text:"#E65100", border:"#FFB74D" },
+      "Core Concepts":     { bg:"#E8F5E9", text:"#1B5E20", border:"#81C784" },
+      "Building Blocks":   { bg:"#E3F2FD", text:"#0D47A1", border:"#64B5F6" },
+      "Essential Skills":  { bg:"#F3E5F5", text:"#4A148C", border:"#BA68C8" },
+      "Productivity Tools":{ bg:"#FFF8E1", text:"#F57F17", border:"#FFD54F" },
+      "Building & Creating":{ bg:"#E0F7FA", text:"#006064", border:"#4DD0E1" },
+      "Entrepreneurship":  { bg:"#FCE4EC", text:"#880E4F", border:"#F06292" },
+    };
+
+    // ---- RENDER ----
+    let activeFilter = "All";
+    const tags = ["All", ...new Set(lessons.map(l => l.tag))];
+
+    function renderFilters() {
+      const el = document.getElementById("filters");
+      el.innerHTML = tags.map(tag =>
+        `<button class="filters__btn ${activeFilter === tag ? 'active' : ''}" data-tag="${tag}">${tag}</button>`
+      ).join("");
+      el.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => { activeFilter = btn.dataset.tag; renderFilters(); renderLessons(); });
+      });
+    }
+
+    function renderLessons() {
+      const container = document.getElementById("lessons-container");
+      const filtered = activeFilter === "All" ? lessons : lessons.filter(l => l.tag === activeFilter);
+      container.innerHTML = filtered.map(l => {
+        const c = tagColors[l.tag];
+        return `
+        <div class="lesson" id="lesson-${l.week}">
+          <div class="lesson__header" onclick="toggleLesson(${l.week})">
+            <div class="lesson__icon">${l.icon}</div>
+            <div class="lesson__meta">
+              <div>
+                <span class="lesson__week">Week ${l.week}</span>
+                <span class="lesson__tag" style="background:${c.bg}33;color:${c.text};border:1px solid ${c.border}44">${l.tag}</span>
+              </div>
+              <div class="lesson__title">${l.title}</div>
+              <div class="lesson__subtitle">${l.subtitle}</div>
+            </div>
+            <div class="lesson__chevron">▾</div>
+          </div>
+          <div class="lesson__body">
+            <p class="lesson__desc">${l.description}</p>
+            <div class="lesson__analogy">
+              <div class="lesson__analogy-label">🌍 Real-World Analogy</div>
+              <p>${l.realWorld}</p>
+            </div>
+            <div class="lesson__grid">
+              <div class="lesson__outcome">
+                <div class="lesson__outcome-label">✅ What You'll Achieve</div>
+                <p>${l.outcome}</p>
+              </div>
+              <div class="lesson__tools">
+                <div class="lesson__tools-label">🛠️ Tools &amp; Tech</div>
+                <div class="lesson__tools-list">
+                  ${l.tools.map(t => `<span class="lesson__tool">${t}</span>`).join("")}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    function toggleLesson(week) {
+      const el = document.getElementById("lesson-" + week);
+      el.classList.toggle("expanded");
+    }
+
+    renderFilters();
+    renderLessons();
+  </script>
+</body>
+</html>
